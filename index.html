@@ -179,8 +179,6 @@
     </article>
 
     <article class="card">
-
-        
         <h3 class="card__title">2 спринт: О тех, кто рядом</h3>
         <div class="card__image-container">
             <img class="card__image image-support" src="images/private_music.png" alt="Куртинка">
@@ -267,7 +265,7 @@
         </div>
         <div class="card__text-container">
             <p class="card__text">Во время учёбы часто возникает чувство, когда не знаешь, за что хвататься. Вроде и
-                проектную пора сдавать, и задачи хочется порешать, и в теории получлучше разобраться, и жизнь не забыть
+                проектную пора сдавать, и задачи хочется порешать, и в теории получше разобраться, и жизнь не забыть
                 пожить.
                 В такие моменты очень нужна концентрация. Вспомните, откуда вы её черпали.</p>
 
@@ -341,11 +339,15 @@
         </div>
     </article>
 
-    <button type="button" class="button save__button">
-    <svg class="button__icon" viewBox="0 0 39 39">
-        <use href="svg/sprite.svg#icon-floppy"/>
-    </svg>
-    <span class="button__text">Сохранить на память</span>
+    <button
+            type="button"
+            onclick="window.modal.showModal();"
+            aria-controls="modal"
+            class="button save__button">
+        <svg class="button__icon" viewBox="0 0 39 39">
+            <use href="svg/sprite.svg#icon-floppy"/>
+        </svg>
+        <span class="button__text">Сохранить на память</span>
     </button>
 </main>
 
@@ -356,14 +358,16 @@
         </svg>
         <p>Вставьте дискету, чтобы продолжить</p>
     </div>
-    <button
-            type="button"
-            class="button modal__button">
-        <span class="button__text">ок</span>
-    </button>
+    <form method="dialog">
+        <button
+                type="button"
+                onclick="window.modal.close();"
+                aria-controls="modal"
+                class="button modal__button">
+            <span class="button__text">ок</span>
+        </button>
+    </form>
 </dialog>
-
 <script src="./scripts/like.js"></script>
-
 </body>
 </html>
