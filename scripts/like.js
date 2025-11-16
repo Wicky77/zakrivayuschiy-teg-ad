@@ -13,12 +13,17 @@ const likeButtonArray = document.querySelectorAll('.card__like-button');
 const iconButtonArray = document.querySelectorAll('.card__icon-button');
 
 iconButtonArray.forEach((iconButton, index) => {
-  iconButton.onclick = () =>
+  iconButton.addEventListener('click', (event) => {
+    event.preventDefault();
     toggleIsLiked(likeHeartArray[index], likeButtonArray[index]);
+  });
 });
 
 likeButtonArray.forEach((button, index) => {
-  button.onclick = () => toggleIsLiked(likeHeartArray[index], button);
+  button.addEventListener('click', (event) => {
+    event.preventDefault();
+    toggleIsLiked(likeHeartArray[index], button);
+  });
 });
 
 function toggleIsLiked(heart, button) {
@@ -39,6 +44,8 @@ function setButtonText(heart, button) {
     );
   }
 }
+
+// Обработчики для модального окна
 document.addEventListener('DOMContentLoaded', function() {
     const saveButton = document.querySelector('.save__button');
     const modal = document.getElementById('modal');
@@ -47,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (saveButton) {
         saveButton.addEventListener('click', function(event) {
             event.preventDefault();
+            event.stopPropagation();
             if (modal) {
                 modal.showModal();
             }
@@ -56,8 +64,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (closeButton && modal) {
         closeButton.addEventListener('click', function(event) {
             event.preventDefault();
+            event.stopPropagation();
             modal.close();
         });
     }
+    
+    // Дополнительная защита от перезагрузки
+    document.addEventListener('click', function(event) {
+        if (event.target.type === 'button' || event.target.closest('button[type="button"]')) {
+            event.preventDefault();
+        }
+    });
 });
-
