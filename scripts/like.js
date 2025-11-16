@@ -39,24 +39,60 @@ function setButtonText(heart, button) {
     );
   }
 }
-// После загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     const saveButton = document.querySelector('.save-button');
     const okButton = document.querySelector('.ok-button');
     
     if (saveButton) {
         saveButton.addEventListener('click', function(event) {
-            event.preventDefault(); // Предотвращаем перезагрузку
-            // Ваша логика сохранения
+            event.preventDefault(); 
+          
             console.log('Сохранение...');
         });
     }
     
     if (okButton) {
         okButton.addEventListener('click', function(event) {
-            event.preventDefault(); // Предотвращаем перезагрузку
-            // Ваша логика для кнопки ОК
+            event.preventDefault(); 
+          
             console.log('OK нажата');
         });
     }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  const saveButton = document.querySelector('.card__save-button');
+  const dialog = document.querySelector('dialog');
+  const okButton = document.querySelector('.dialog__ok-button');
+  
+
+  if (saveButton) {
+    saveButton.addEventListener('click', function(event) {
+      event.preventDefault(); 
+      
+      if (dialog) {
+        dialog.showModal();
+      }
+    });
+  }
+  
+  
+  if (okButton) {
+    okButton.addEventListener('click', function(event) {
+      event.preventDefault(); 
+      
+      if (dialog) {
+        dialog.close();
+      }
+    });
+  }
+  
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+    });
+  });
 });
