@@ -39,3 +39,24 @@ function setButtonText(heart, button) {
     );
   }
 }
+// После загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    const saveButton = document.querySelector('.save-button');
+    const okButton = document.querySelector('.ok-button');
+    
+    if (saveButton) {
+        saveButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращаем перезагрузку
+            // Ваша логика сохранения
+            console.log('Сохранение...');
+        });
+    }
+    
+    if (okButton) {
+        okButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращаем перезагрузку
+            // Ваша логика для кнопки ОК
+            console.log('OK нажата');
+        });
+    }
+});
