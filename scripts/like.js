@@ -39,3 +39,25 @@ function setButtonText(heart, button) {
     );
   }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const saveButton = document.querySelector('.save__button');
+    const modal = document.getElementById('modal');
+    const closeButton = document.querySelector('.modal__button');
+    
+    if (saveButton) {
+        saveButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (modal) {
+                modal.showModal();
+            }
+        });
+    }
+    
+    if (closeButton && modal) {
+        closeButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            modal.close();
+        });
+    }
+});
+
