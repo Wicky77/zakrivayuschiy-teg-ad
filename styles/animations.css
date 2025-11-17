@@ -27,8 +27,3 @@
 		opacity: 1;
 	}
 }
-
-.card__icon-button:focus-visible {
-  outline-color: black;
-  transition: outline-color var(--time_step) linear;
-}
