@@ -320,3 +320,35 @@
   filter: invert(1);
   transition: invert 0.5s ease-in-out;
 }
+
+.filter1 {
+  filter: sepia(100%) brightness(80%);
+}
+
+.filter2 {
+  filter: grayscale(100%) contrast(120%);
+}
+
+.filter3 {
+  filter: hue-rotate(90deg) saturate(150%);
+}
+
+.filter4 {
+  filter: invert(100%) brightness(90%);
+}
+
+.filter5 {
+  filter: blur(2px) brightness(110%);
+}
+
+.filter6 {
+  filter: contrast(200%) saturate(200%);
+}
+
+.filter7 {
+  filter: opacity(70%) hue-rotate(180deg);
+}
+
+.filter8 {
+  filter: brightness(130%) saturate(150%) hue-rotate(45deg);
+}
