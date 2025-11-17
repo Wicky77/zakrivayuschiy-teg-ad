@@ -1,27 +1,27 @@
 :root {
-  --width-main: clamp(375px, 100vw, 696px);
-  --font-size: 18px;
-  --height-welcome: 368px;
-  --height-card__title: 31px;
-  --h1-welcome: 65px;
-  --h2-welcome: 23px;
-  --margin-save: 180px;
-  --width-save: 335px;
-  --height-save: 55px;
-  --margin-left-label: 25px;
-  --width-dialog-text: 234px;
-  --width-dialog-button-close: 293px;
-  --text-weight: 400;
-  --title-weight: 700;
-  --font-size-card-label: 14px;
-  --color: #000;
-  --shadow-color: #fff;
-  --background-color: #fff;
-  --heart-contour-color: black;
-  --heart-sparks-color: red;
-  --time_step: 0.3s;
-  --page-width: clamp(18.75rem, 100%, 43.5rem);
-  --header-title-font-size: clamp(3.063rem, 1.909rem + 4.92vw, 4.063rem);
-  --header-subtitle-font-size: clamp(0.875rem, 0.226rem + 2.77vw, 1.438rem);
-  --linear-gradient: 0%;
+	--regular-font: 'Inter-Variable';
+	--accent-font: 'PressStart2P';
+
+	--card-title-weight:700;
+  	--card-text-weight:400;
+
+	--bg-color: #fff;
+	--accent-color: #000;
+	--text-size:18px;
+     
+	--header-padding: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem) ;
+	--title-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+	--header-text-size:  clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+	--container-width: clamp(23.4375rem, 16.2852rem + 30.5164svi, 43.75rem);
+
+	--page-bg-image:
+        repeating-linear-gradient(90deg, #d3d3d3 0 2px, rgb(0 0 0 / 0) 2px 4px),
+        repeating-linear-gradient(180deg,#d3d3d3 0 2px, rgb(0 0 0 / 0) 2px 4px),
+        linear-gradient(180deg, #e7e7e7 0%,#e7e7e7 0.01%,#1a1a1a 100%);
+
+	--backdrop-color: rgb(0 0 0 / 0.75);
+
+	--contour-color: #000;
+	--heart-core-color: #fff;
+	--sparks-color: #ff0000;
 }
