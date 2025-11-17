@@ -11,27 +11,13 @@
 */
 
 
-:root {
-  --width-main: 696px;
-  --font-size: 18px;
-  --height-welcome: 323px;
-  --h1-welcome: 65px;
-  --h2-welcome: 23px;
-  --margin-save: 0px;
-  --width-save: 335px;
-  --height-save: 51px;
-  --margin-left-label: 25px;
-  --width-dialog-text: 234px;
-  --width-dialog-button-close: 293px;
-}
-
 .dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgb(0 0 0 / 0.7);
 }
 
 .page {
-  min-width: 320px;
-  min-height: 100vh;
+  min-inline-size: 320px;
+  min-block-size: 100dvb;
   font-family: Inter-Variable, sans-serif;
   font-variation-settings: "wght" 400;
   font-size: var(--font-size);
@@ -50,8 +36,8 @@
 .dialog {
   border: none;
   outline: 2px solid #000;
-  width: 357px;
-  height: 193px;
+  inline-size: 357px;
+  block-size: 193px;
   box-sizing: border-box;
 }
 
@@ -71,22 +57,22 @@
 .dialog__close {
   border: none;
   outline: 2px solid #000;
-  width: var(--width-dialog-button-close);
-  height: 38px;
+  inline-size: var(--width-dialog-button-close);
+  block-size: 38px;
   background-color: #fff;
   transition: box-shadow 0.3s ease;
 }
 
-.dialog__text-container {
+.dialog__text-conteiner {
   display: flex;
   gap: 20px;
 }
 
-.dialog__text-container__disketto {
+.dialog__text-conteiner__disketto {
   width: 45px;
 }
 
-.dialog__text-container__text {
+.dialog__text-conteiner__text {
   line-height: 150%;
   text-transform: uppercase;
   width: var(--width-dialog-text);
@@ -107,9 +93,9 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  height: var(--height-welcome);
+  block-size: var(--height-welcome);
   background-color: #fff;
-  width: var(--width-main);
+  inline-size: var(--width-main);
   margin: 100px 0;
   box-sizing: border-box;
   border: 2px solid #000;
@@ -152,13 +138,26 @@
   position: absolute;
   top: 25px;
   right: var(--margin-left-label);
-  mix-blend-mode: difference;
-  color: #fff;
+}
+
+@supports (-webkit-text-stroke: 1px #fff) {
+
+  .card__over-img__text {
+    -webkit-text-stroke: 1px rgb(255 255 255 / 0.5);
+  }
+}
+
+@supports (text-stroke: 1px #fff) {
+
+  .card__over-img__text {
+    -webkit-text-stroke: 1px rgb(255 255 255 / 0.5);
+  }
 }
 
 .card__title {
   background-color: #fff;
   font-weight: 700;
+  font-style: bold;
   font-size: 18px;
   margin-left: 10px;
   margin-bottom: 6px;
@@ -166,6 +165,7 @@
 }
 
 @supports (font-variation-settings: "wght" 700) {
+
   .card__title {
     font-variation-settings: "wght" 700;
   }
@@ -179,7 +179,7 @@
   margin: 0 25px 25px;
 }
 
-.card__container-buttons {
+.card__conteiner-buttons {
   display: flex;
   gap: 12px;
   width: min-content;
@@ -239,20 +239,21 @@
 }
 
 /* градиенты на карточки */
+
 .grad1 {
-  filter: saturate(30%);
+  filter: saturate(38%) brightness(80%);
 }
 
 .grad2 {
-  filter: saturate(400%);
+  filter: saturate(458%) contrast(160%);
 }
 
 .grad3 {
-  filter: hue-rotate(45deg);
+  filter: hue-rotate(45deg) saturate(108%);
 }
 
 .grad4 {
-  filter: invert(0.8);
+  filter: hue-rotate(45deg) invert(0.8);
 }
 
 .grad5 {
@@ -260,18 +261,20 @@
 }
 
 .grad6 {
-  filter: blur(5px);
+  filter: blur(1rem);
 }
 
 .grad7 {
-  filter: hue-rotate(90deg) sepia(20%);
+  filter: blur(0.2rem) hue-rotate(90deg) sepia(20%);
 }
 
-@media (max-width: 375px) {
+@media (width <= 375px) {
+
   :root {
-    --width-main: 375px;
+    --width-main: clamp(375px, 100vw, 700px);
     --font-size: 18px;
     --height-welcome: 327px;
+    --height-card__title: 31px;
     --h1-welcome: 49px;
     --h2-welcome: 14px;
     --margin-save: 35px;
@@ -295,13 +298,13 @@
 .card__like-button:focus,
 .save-button:focus,
 .dialog__close:focus {
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 1);
+  box-shadow: 4px 4px 0 rgb(0 0 0 / 1);
 }
 
 .card__like-button:focus-visible,
 .save-button:focus-visible,
 .dialog__close:focus-visible {
-  outline: 2px solid #000;
+  outline: 2px solid var(--color);
 }
 
 .card__like-button:hover,
@@ -316,5 +319,5 @@
 
 .save-button:hover .save-button__disketto {
   filter: invert(1);
-  transition: filter 0.5s ease-in-out;
+  transition: invert 0.5s ease-in-out;
 }
