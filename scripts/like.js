@@ -12,32 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const likeHeartArray = document.querySelectorAll('.like-icon');
   const likeButtonArray = document.querySelectorAll('.card__like-button');
   const iconButtonArray = document.querySelectorAll('.card__icon-button');
-  const saveButton = document.querySelector('.main__save-button');
-  const dialog = document.getElementById('dialog');
-  const okButton = document.querySelector('.dialog__ok-button');
 
-  if (saveButton && dialog) {
-    saveButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      dialog.showModal();
-    });
-  }
-
-  if (okButton && dialog) {
-    okButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      dialog.close();
-    });
-  }
-
-  if (dialog) {
-    dialog.addEventListener('click', function(event) {
-      if (event.target === this) {
-        this.close();
-      }
-    });
-  }
-
+  
   iconButtonArray.forEach(function(iconButton, index) {
     if (likeHeartArray[index]) {
       iconButton.onclick = function() {
