@@ -8,61 +8,76 @@
 Если эти классы поменять в HTML, скрипт перестанет работать. Будьте аккуратны.
 */
 
-const likeHeartArray = document.querySelectorAll('.like-icon');
-const likeButtonArray = document.querySelectorAll('.card__like-button');
-const iconButtonArray = document.querySelectorAll('.card__icon-button');
-const saveButton = document.querySelector('.main__save-button');
-const dialog = document.getElementById('dialog');
-const okButton = document.querySelector('.dialog__ok-button');
+document.addEventListener('DOMContentLoaded', function() {
+  const likeHeartArray = document.querySelectorAll('.like-icon');
+  const likeButtonArray = document.querySelectorAll('.card__like-button');
+  const iconButtonArray = document.querySelectorAll('.card__icon-button');
+  const saveButton = document.querySelector('.main__save-button');
+  const dialog = document.getElementById('dialog');
+  const okButton = document.querySelector('.dialog__ok-button');
 
-if (saveButton && dialog) {
-  saveButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    dialog.showModal();
-  });
-}
+  if (saveButton && dialog) {
+    saveButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      dialog.showModal();
+    });
+  }
 
-if (okButton && dialog) {
-  okButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    dialog.close();
-  });
-}
+  if (okButton && dialog) {
+    okButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      dialog.close();
+    });
+  }
 
-if (dialog) {
-  dialog.addEventListener('click', function(event) {
-    if (event.target === this) {
-      this.close();
+  if (dialog) {
+    dialog.addEventListener('click', function(event) {
+      if (event.target === this) {
+        this.close();
+      }
+    });
+  }
+
+  iconButtonArray.forEach(function(iconButton, index) {
+    if (likeHeartArray[index]) {
+      iconButton.onclick = function() {
+        toggleIsLiked(likeHeartArray[index], likeButtonArray[index]);
+      };
     }
   });
-}
 
+  likeButtonArray.forEach(function(button, index) {
+    if (likeHeartArray[index]) {
+      button.onclick = function() {
+        toggleIsLiked(likeHeartArray[index], button);
+      };
+    }
+  });
 
-iconButtonArray.forEach(function(iconButton, index) {
-  iconButton.onclick = function() {
-    toggleIsLiked(likeHeartArray[index], likeButtonArray[index]);
-  };
-});
-
-likeButtonArray.forEach(function(button, index) {
-  button.onclick = function() {
-    toggleIsLiked(likeHeartArray[index], button);
-  };
-});
-
-function toggleIsLiked(heart, button) {
-  heart.classList.toggle('is-liked');
-  setButtonText(heart, button);
-}
-
-function setButtonText(heart, button) {
-  if (heart.classList.contains('is-liked')) {
-    setTimeout(function() {
-      button.querySelector('.button__text').textContent = 'Unlike';
-    }, 500);
-  } else {
-    setTimeout(function() {
-      button.querySelector('.button__text').textContent = 'Like';
-    }, 500);
+  function toggleIsLiked(heart, button) {
+    heart.classList.toggle('is-liked');
+    setButtonText(heart, button);
   }
-}
+
+  function setButtonText(heart, button) {
+    if (!button || !button.querySelector('.button__text')) {
+      return;
+    }
+    
+    if (heart.classList.contains('is-liked')) {
+      setTimeout(function() {
+        const textElement = button.querySelector('.button__text');
+        if (textElement) {
+          textElement.textContent = 'Unlike';
+        }
+      }, 500);
+    } else {
+      setTimeout(function() {
+        const textElement = button.querySelector('.button__text');
+        if (textElement) {
+          textElement.textContent = 'Like';
+        }
+      }, 500);
+    }
+  }
+});
