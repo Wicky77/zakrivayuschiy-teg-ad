@@ -468,19 +468,20 @@
 			</div>
 		</main>
 		<dialog id="dialog" class="dialog">
-			<div class="dialog__content">
-				<svg viewBox="0 0 39 39" class="dialog__icon">
-					<use href="./images/floppy.svg#floppy" />
-				</svg>
-				<p class="dialog__text">Вставьте дискету, чтобы продолжить</p>
-			</div>
-			<button
-				type="button"
-				onclick="document.getElementById('dialog').close();"
-				class="button dialog__ok-button">
-				<span class="button__text dialog__ok-text">OK</span>
-			</button>
+		    <div class="dialog__content">
+		        <svg viewBox="0 0 39 39" class="dialog__icon">
+		            <use href="./images/floppy.svg#floppy" />
+		        </svg>
+		        <p class="dialog__text">Вставьте дискету, чтобы продолжить</p>
+		    </div>
+		    <button
+		        type="button"
+		        class="button dialog__ok-button"
+		        id="ok-button">
+		        <span class="button__text dialog__ok-text">OK</span>
+		    </button>
 		</dialog>
+		
 		<script src="./scripts/like.js"></script>
 	</body>
 </html>
