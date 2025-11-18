@@ -338,12 +338,12 @@
 		width: 28px;
 		height: 28px;
 	}
-
 	.element {
 	max-width: 100%;
 	width: 100%;
 	}
 }
+
 @supports (text-stroke: 1px var(--bg-color)) or
 	(-webkit-text-stroke: 1px var(--bg-color)) {
 	.image-label {
